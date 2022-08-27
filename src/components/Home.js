@@ -10,7 +10,7 @@ class Home extends Component {
     };
     render() {
         return (
-            <Navbar bg="light" expand="lg">
+            <Navbar bg="light">
                 <Container>
                     <Nav fill variant="tabs" defaultActiveKey="/home">
                         <Navbar.Brand href="/">Home</Navbar.Brand>

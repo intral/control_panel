@@ -5,7 +5,7 @@ import Home from "./Home";
 export default class ServiceWot extends Component {
     constructor(props) {
         super(props);
-        
+
 
         this.state = {
 
@@ -26,58 +26,70 @@ export default class ServiceWot extends Component {
                 <Container className="p-1">
                     <Container className="p-4 mb-1 bg-light rounded-3">
                         <Form>
-                            <label>ИБИС РЛИС</label>
-                            <Row className="p-2">
-                                <Form.Group as={Col} controlId="formGridStatus">
-                                    <Form.Label>Статус сервиса</Form.Label>
-                                    <Form.Control />
-                                </Form.Group>
+                            <Row>
+                                <Col xs={7}>
+                                    <label>ИБИС РЛИС</label>
+                                    <Row className="p-2">
+                                        <Form.Group as={Col} controlId="formGridStatus">
+                                            <Form.Label>Статус сервиса</Form.Label>
+                                            <Form.Control />
+                                        </Form.Group>
 
-                                <Form.Group as={Col} controlId="formGridPassword">
-                                    <Form.Label>Время работы</Form.Label>
-                                    <Form.Control type="time" />
-                                </Form.Group>
+                                        <Form.Group as={Col} controlId="formGridPassword">
+                                            <Form.Label>Время работы</Form.Label>
+                                            <Form.Control type="time" />
+                                        </Form.Group>
+                                    </Row>
+                                    <label>Информация о БД</label>
+                                    <Row className="p-2">
+                                        <Form.Group as={Col} className="mb-3" controlId="formGridAddress1">
+                                            <Form.Label>Имя БД</Form.Label>
+                                            <Form.Control placeholder="mis3" />
+                                        </Form.Group>
+
+                                        <Form.Group as={Col} className="mb-3" controlId="formGridAddress2">
+                                            <Form.Label>IP</Form.Label>
+                                            <Form.Control placeholder="192.168.1.1" />
+                                        </Form.Group>
+
+                                        <Form.Group as={Col} className="mb-3" controlId="formGridAddress3">
+                                            <Form.Label>Порт</Form.Label>
+                                            <Form.Control placeholder="5432" />
+                                        </Form.Group>
+                                    </Row>
+                                    <label>Инфо</label>
+
+                                    <Form.Group className="mb-2 p-2" controlId="formGridAddress2">
+                                        <Form.Label>Занимаемая память</Form.Label>
+                                        <Form.Control placeholder="500Mb" />
+                                    </Form.Group>
+                                    <Stack direction="horizontal" gap={1}>
+                                        <Button variant="primary" type="submit">
+                                            Запросить Информацию
+                                        </Button>
+                                        <Button variant="primary" type="submit">
+                                            Перезапустить
+                                        </Button>
+                                        <Button variant="primary" type="submit">
+                                            Остановить
+                                        </Button>
+                                        <Button variant="primary" type="Cancel" onClick={this.cancelClick}>
+                                            Запустить
+                                        </Button>
+                                        <Link className="btn btn-danger" to='/Service'>
+                                            Назад
+                                        </Link>
+                                    </Stack>
+                                </Col>
+                                <Col>
+                                    <Row className="p-2">
+                                        <Form.Group as={Col} className="mb-3" controlId="formGridAddress1">
+                                            <Form.Label>Тут будет график</Form.Label>
+                                            <Form.Control placeholder="mis3" />
+                                        </Form.Group>
+                                    </Row>
+                                </Col>
                             </Row>
-                            <label>Информация о БД</label>
-                            <Row className="p-2">
-                                <Form.Group as={Col} className="mb-3" controlId="formGridAddress1">
-                                    <Form.Label>Имя БД</Form.Label>
-                                    <Form.Control placeholder="mis3" />
-                                </Form.Group>
-
-                                <Form.Group as={Col} className="mb-3" controlId="formGridAddress2">
-                                    <Form.Label>IP</Form.Label>
-                                    <Form.Control placeholder="192.168.1.1" />
-                                </Form.Group>
-
-                                <Form.Group as={Col} className="mb-3" controlId="formGridAddress3">
-                                    <Form.Label>Порт</Form.Label>
-                                    <Form.Control placeholder="5432" />
-                                </Form.Group>
-                            </Row>
-                            <label>Инфо</label>
-
-                            <Form.Group className="mb-2 p-2" controlId="formGridAddress2">
-                                <Form.Label>Занимаемая память</Form.Label>
-                                <Form.Control placeholder="500Mb" />
-                            </Form.Group>
-                            <Stack direction="horizontal" gap={2}>
-                                <Button variant="primary" type="submit">
-                                    Запросить Информацию
-                                </Button>
-                                <Button variant="primary" type="submit">
-                                    Перезапустить
-                                </Button>
-                                <Button variant="primary" type="submit">
-                                    Остановить
-                                </Button>
-                                <Button variant="primary" type="Cancel" onClick={this.cancelClick}>
-                                    Запустить
-                                </Button>
-                                <Button variant="danger" type="Cancel" onClick={this.cancelClick}>
-                                    Назад
-                                </Button>
-                            </Stack>
                         </Form>
                     </Container>
                 </Container>
