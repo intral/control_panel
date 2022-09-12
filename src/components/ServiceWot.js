@@ -1,7 +1,10 @@
+import { Button, Container, FormLabel, Stack } from "@mui/material";
 import React, { Component } from "react";
-import { Link, Navigate, useNavigate } from 'react-router-dom';
-import { Container, Row, Col, Form, Stack, Button } from "react-bootstrap";
+import { Col, Form, Row } from "react-bootstrap";
+import { Link } from 'react-router-dom';
 import Home from "./Home";
+
+
 export default class ServiceWot extends Component {
     constructor(props) {
         super(props);
@@ -10,25 +13,18 @@ export default class ServiceWot extends Component {
         this.state = {
 
         };
-        this.cancelClick = this.cancelClick.bind(this);
-    }
-    cancelClick() {
-        let navigane = useNavigate();
-        navigane("/Service", { replace: true });
-        //return <Navigate to='/Service' replace={true}/>;
-        //return <Link  to='/Service'/>
-
     }
     render() {
         return (
             <div>
                 <Home />
-                <Container className="p-1">
+                <Container centered sx={{ p: 1, mb: 2, gap: 1 }}>
                     <Container className="p-4 mb-1 bg-light rounded-3">
                         <Form>
+                            <FormLabel>ИБИС РЛИС</FormLabel>
                             <Row>
                                 <Col xs={7}>
-                                    <label>ИБИС РЛИС</label>
+
                                     <Row className="p-2">
                                         <Form.Group as={Col} controlId="formGridStatus">
                                             <Form.Label>Статус сервиса</Form.Label>
@@ -58,22 +54,21 @@ export default class ServiceWot extends Component {
                                         </Form.Group>
                                     </Row>
                                     <label>Инфо</label>
-
                                     <Form.Group className="mb-2 p-2" controlId="formGridAddress2">
                                         <Form.Label>Занимаемая память</Form.Label>
                                         <Form.Control placeholder="500Mb" />
                                     </Form.Group>
-                                    <Stack direction="horizontal" gap={1}>
-                                        <Button variant="primary" type="submit">
-                                            Запросить Информацию
+                                    <Stack direction="row" spacing={1}>
+                                        <Button variant="contained" >
+                                            Обновить
                                         </Button>
-                                        <Button variant="primary" type="submit">
+                                        <Button variant="contained" >
                                             Перезапустить
                                         </Button>
-                                        <Button variant="primary" type="submit">
+                                        <Button variant="contained">
                                             Остановить
                                         </Button>
-                                        <Button variant="primary" type="Cancel" onClick={this.cancelClick}>
+                                        <Button variant="contained" onClick={this.cancelClick}>
                                             Запустить
                                         </Button>
                                         <Link className="btn btn-danger" to='/Service'>
