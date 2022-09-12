@@ -1,9 +1,9 @@
-import React, { Component } from "react";
+import React, { Component, useState } from "react";
 import { Link } from "react-router-dom";
-import { Button, Container, Stack } from "react-bootstrap";
 import ReactDataGrid from '@inovua/reactdatagrid-community';
 import '@inovua/reactdatagrid-community/index.css'
 import Home from "./Home";
+import { Box, Button, Toolbar } from "@mui/material";
 export default class ServiceList extends Component {
   constructor(props) {
     super(props);
@@ -31,11 +31,11 @@ export default class ServiceList extends Component {
       { name: 'id', header: 'ID', defaultVisible: false },
       { name: 'name', header: 'Имя сервиса' },
       { name: 'ver', header: 'Версия сервиса' },
-      { name: 'status', header: 'Статус' },
-      { name: 'description', header: 'Описание' },
+      { name: 'status', header: 'Статус', width: 500  },
+      { name: 'description', header: 'Описание', width: 500 },
     ];
 
-    const gridStyle = { minHeight: 550, rowHeight: '100%' }
+    const gridStyle = { minHeight: 550, rowHeight: '100%', width: '100%', Height: '100%' }
     //Пока данные не получаю. так как разбираюсь только с реактом 
     const rows = [
       { id: 0, name: 'РЛИС', ver: '1,4', status: 'Все хорошо', description: 'Сервис для лабораторки' },
@@ -45,20 +45,25 @@ export default class ServiceList extends Component {
       { id: 4, name: 'ЭЦП МО', ver: '1,4', status: 'Все хорошо', description: 'Сервис для подписи ЭЦП МО' },
       { id: 5, name: 'ВИМИС', ver: '1,4', status: 'Все плохо', description: 'Сервис для сбора информации в помойку' },
       { id: 6, name: 'РПН', ver: '1,4', status: 'Бывало и лучше', description: 'Сервис для усложнения жизни остальным сервисам' },
-      { id: 7, name: 'РВИМИС', ver: '1,4', status: 'На дне', description: 'Сервис для вобще непонятно дл чего' }
+      { id: 7, name: 'РВИМИС', ver: '1,4', status: 'На дне', description: 'Сервис для вобще непонятно для чего' }
     ];
     return (
-      <div>
+      <Box sx={{ flexGrow: 1 }}>
         <Home />
-        <Container fluid>
-          <div className="float-end">
-            <Stack direction="horizontal" gap={1}>
-              <Link className="btn btn-success" to={ "/Service/" + selected}>Открыть панель управления</Link>
-              <Button color="success" onClick={e => console.log(this.state.uqService.current.getItemAt(selected).name)}>Обновить</Button>
-            </Stack>
-            
-          </div>
-          <h3>ИБИС Сервисы</h3>
+        <Box
+          maxWidth='xl'
+          sx={{
+            width: 'auto',
+            height: 'auto',
+            p: 2
+          }}
+        >
+          <Toolbar sx={{ ml: -2, mr: 2, gap: 1 }}>
+            <h3>ИБИС Сервисы</h3>
+            <Button component={Link} to={"/Service/" + selected} variant="contained" >Открыть управляющую панель</Button>
+            <Button variant="contained" onClick={e => console.log(this.state.uqService.current.getItemAt(selected).name)}>Обновить</Button>
+          </Toolbar>
+
           <ReactDataGrid
             theme="default-light"
             idProperty="id"
@@ -70,8 +75,10 @@ export default class ServiceList extends Component {
             onSelectionChange={this.onSelectionChange}
             defaultFilterValue={defaultFilterValue}
           />
-        </Container>
-      </div>
+
+
+        </Box>
+      </Box>
     );
   }
 }
